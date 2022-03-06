@@ -56,7 +56,7 @@ export default {
         },
         {
           label: '留言板',
-          path: '/',
+          path: '/message',
         },
 
       ]

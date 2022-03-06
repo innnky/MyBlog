@@ -3,11 +3,11 @@
     <common-header class="w-100 position-fixed" style="z-index: 1000"/>
 
     <div class="web-bg " :style="bgstyle"></div>
-    <h3 class="title mb-3" style="text-align: left">SpringBoot学习笔记</h3>
+    <h3 class="mytitle mb-3" style="text-align: left">SpringBoot学习笔记</h3>
     <div style="width: 100%;">
       <div class="content row justify-content-center w-100 m-0" >
         <!--    <div></div>-->
-        <div class="col-md-10 col-xxl-8">
+        <div class="col-md-10">
           <div style="background:#fff;padding: 40px;box-shadow: 0px 0px 30px rgba(107,74,82,0.39);
               border-radius: 2px;min-height: 500px">
             <p>
@@ -150,7 +150,7 @@ export default {
   background-repeat: no-repeat;
 }
 
-.title {
+.mytitle {
   font-size: 40px;
   font-family: 宋体, serif;
   color: #3f001c;
@@ -159,6 +159,7 @@ export default {
   margin-top: 160px;
   /*margin-top: 3px;*/
 }
+
 
 div {
   font-family: Arial, serif;

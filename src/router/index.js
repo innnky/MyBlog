@@ -5,6 +5,7 @@ import AllArticles from "@/views/AllArticles";
 import Classes from "@/views/Classes";
 import Schedule from "@/views/Schedule";
 import Article from "@/views/Article";
+import MessageBoard from "@/views/MessageBoard";
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,10 @@ const routes = [
     {
         path: "/article",
         component: Article
+    },
+    {
+        path: "/message",
+        component: MessageBoard
     }
 ]
 const router = new VueRouter({
