@@ -13,7 +13,7 @@
               style="background:#fff;padding: 40px;box-shadow: 0px 0px 30px rgba(231,154,170,0.39);
               border-radius: 2px">
         <div v-for="article in articleData" :key="article.title">
-          <h2 style="font-family: 'Lucida Handwriting',sans-serif;color: #2d0117">{{ article.title }}</h2>
+          <h2 style="font-family: 'Lucida Handwriting',sans-serif;color: #2d0117" @click="showArticleDetail(article.url)">{{ article.title }}</h2>
           <p style="margin-left: 15px;font-weight: lighter;font-family:'微软雅黑 Light',sans-serif">加iconPath属性以显示图标
             + 添加selectPath属性以显示选中图标</p>
           <span style="float: right;font-style: italic">2022.2.16</span>
@@ -51,7 +51,8 @@ export default {
         {
           title: 'SpringBoot笔记',
           abstract: '加iconPath属性以显示图标 + 添加selectPath属性以显示选中图标\n',
-          date: '2022.2.16'
+          date: '2022.2.16',
+          url: "/article"
         },
         {
           title: 'SpringBoot笔记',
@@ -69,6 +70,12 @@ export default {
       ]
     }
   },
+  methods:{
+    showArticleDetail(url){
+      // console.log("aaa");
+      this.$router.push(url)
+    }
+  }
 }
 </script>
 
