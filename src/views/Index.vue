@@ -19,12 +19,12 @@
 box-shadow: 0 0 30px rgba(246,186,186,0.1)">
       <div style="width: 40%;margin-left: 100px" class="hidden-xs-only">
         <h3 class="title" style="margin-top: 5px"> 最近文章 </h3>
-        <p class="linktext" style="font-size: 20px" v-for="article in recentArticles" :key="article">{{ article }}</p>
+        <p class="linktext" style="font-size: 20px" v-for="article in recentArticles" :key="article">{{ article.title }}</p>
         <span class="linktext">查看更多</span>
       </div>
       <div style="width: 80%;margin-left: 10px" class="hidden-sm-and-up">
         <h3 class="title" style="margin-top: 5px"> 最近文章 </h3>
-        <p class="linktext" style="font-size: 20px" v-for="article in recentArticles" :key="article">{{ article }}</p>
+        <p class="linktext" style="font-size: 20px" v-for="article in recentArticles" :key="article">{{ article.title }}</p>
         <span class="linktext">查看更多</span>
       </div>
       <img :src="allArtileImg" class="hidden-xs-only" alt="i" style="width: 30%">
@@ -54,7 +54,7 @@ box-shadow: 0 0 30px rgba(246,186,186,0.1)">
 <!--        </el-row  >-->
         <div class="container m-4">
           <div class="row">
-            <div class="col-md-4 mb-4" v-for="item in inf" :key="item.title">
+            <div class="col-md-4 mb-4" v-for="item in personalInf" :key="item.title">
               <el-card class="box-card" shadow="hover">
                 <div slot="header" class="clearfix">
                   <span>{{ item.title }}</span>
@@ -99,12 +99,23 @@ box-shadow: 0 0 30px rgba(246,186,186,0.1)">
 <script>
 import CommonHeader from "@/components/CommonHeader";
 import CommonFooter from "@/components/CommonFooter";
+import { getIndexInformation} from "@/api/data";
 export default {
   name: "index",
   components: {
     CommonHeader: CommonHeader,
-    CommonFooter:CommonFooter
+    CommonFooter: CommonFooter
 
+  },
+  created() {
+    this.loading = true
+    getIndexInformation().then((res)=>{
+      console.log(res);
+      this.recentArticles = res.data.recentArticles;
+      this.personalInf = res.data.personalInf;
+      this.types = res.data.types;
+      this.loading = false
+    })
   },
   data() {
     return {
@@ -114,18 +125,13 @@ export default {
       },
       bgimg2: 'url(' + require('@/assets/9888608.png') + ')',
       classArticleImg: require('@/assets/un.svg'),
-      recentArticles: [
-        'SpringBoot笔记',
-        'Vue笔记',
-        'Elementui笔记',
-
-      ],
+      recentArticles: [],
       types: [
         '前端',
         '后端',
         'javase'
       ],
-      inf: [
+      personalInf: [
         {
           title: "Bilibili",
           id: "Rcell",
