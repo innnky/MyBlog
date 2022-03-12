@@ -1,0 +1,9 @@
+
+host=smtp.163.com
+port=25
+from=innkly@163.com
+user=innkly@163.com
+pass=OONWDKRLEDUZYPZQ
+sslEnable=false
+starttlsEnable = false
+auth = true
