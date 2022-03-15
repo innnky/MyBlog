@@ -1,4 +1,4 @@
-package xyz.innky.bootproj.vo;
+package xyz.innky.bootproj.dto;
 
 public class Inf {
     private String title;

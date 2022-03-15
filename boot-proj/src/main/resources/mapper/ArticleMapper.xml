@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.innky.bootproj.mapper.ArticleMapper">
+
+    <select id="getAllArticle" resultType="xyz.innky.bootproj.pojo.Article">
+        select * from article
+    </select>
+    <select id="getRecentArticles" resultType="xyz.innky.bootproj.pojo.Article">
+        select id, title from article order by lastModificationTime desc limit #{len};
+    </select>
+</mapper>

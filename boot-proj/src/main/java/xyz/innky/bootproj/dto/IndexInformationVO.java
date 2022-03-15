@@ -1,18 +1,18 @@
-package xyz.innky.bootproj.vo;
+package xyz.innky.bootproj.dto;
 
 import java.util.List;
 
 public class IndexInformationVO {
-    public List<Article> recentArticles;
+    public List<DtoArticle> recentDtoArticles;
     public List<String> types;
     public List<Inf> personalInf;
 
-    public List<Article> getRecentArticles() {
-        return recentArticles;
+    public List<DtoArticle> getRecentArticles() {
+        return recentDtoArticles;
     }
 
-    public void setRecentArticles(List<Article> recentArticles) {
-        this.recentArticles = recentArticles;
+    public void setRecentArticles(List<DtoArticle> recentDtoArticles) {
+        this.recentDtoArticles = recentDtoArticles;
     }
 
     public List<String> getTypes() {
