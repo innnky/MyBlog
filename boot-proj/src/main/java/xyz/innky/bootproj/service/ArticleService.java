@@ -2,6 +2,7 @@ package xyz.innky.bootproj.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import xyz.innky.bootproj.dto.DtoArticle;
 import xyz.innky.bootproj.dto.Inf;
 import xyz.innky.bootproj.mapper.ArticleMapper;
@@ -15,12 +16,15 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
+@Transactional
 public class ArticleService {
 
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     @Autowired
     ArticleMapper articleMapper;
 
+    @Autowired
+    DirMapper dirMapper;
     @Autowired
     InfoMapper infoMapper;
     public List<DtoArticle> getRecentArticles() {
@@ -51,5 +55,31 @@ public class ArticleService {
         article1.setDate(dateFormat.format(new Date(article.getLastModificationTime())));
         article1.setContent(article.getContent());
         return article1;
+    }
+
+    public Integer insertArticle( String content, String dir, String title, Long lastModifiedTime) {
+//        dir.substring(0, dir.lastIndexOf("/"));
+        Integer dirId = dirMapper.queryDir(dir);
+        if (dirId != null){
+            Article article = new Article();
+            article.setContent(content);
+            article.setDirId(dirId);
+            article.setTitle(title);
+            article.setLastModificationTime(lastModifiedTime);
+            return articleMapper.addArticle(article);
+        }
+        return 0;
+    }
+
+    public Integer deleteArticle(String title, String dir) {
+        Integer dirId = dirMapper.queryDir(dir);
+        if (dirId != null){
+            Article article = new Article();
+            article.setTitle(title);
+            article.setDirId(dirId);
+            return articleMapper.deleteArticle(article);
+        }
+        return 0;
+
     }
 }

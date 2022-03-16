@@ -22,7 +22,7 @@ public class Article {
     private Integer dirId;
 
     @Column(name = "lastModificationTime")
-    private Integer lastModificationTime;
+    private Long lastModificationTime;
 
     public Integer getId() {
         return this.id;
@@ -64,11 +64,11 @@ public class Article {
         this.dirId = dirId;
     }
 
-    public Integer getLastModificationTime() {
+    public Long getLastModificationTime() {
         return this.lastModificationTime;
     }
 
-    public void setLastModificationTime(Integer lastModificationTime) {
+    public void setLastModificationTime(Long lastModificationTime) {
         this.lastModificationTime = lastModificationTime;
     }
 

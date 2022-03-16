@@ -16,7 +16,7 @@ public class Dir {
     private Integer parentId;
 
     @Column(name = "createTime")
-    private Integer createTime;
+    private Long createTime;
 
 
     public Integer getId() {
@@ -43,11 +43,11 @@ public class Dir {
         this.parentId = parentId;
     }
 
-    public Integer getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
 }

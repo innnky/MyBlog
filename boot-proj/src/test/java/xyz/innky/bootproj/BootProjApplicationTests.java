@@ -12,7 +12,8 @@ class BootProjApplicationTests {
     ArticleMapper articleMapper;
     @Test
     void contextLoads() {
-        System.out.println(articleMapper.getAllArticle());
+        String dir = "asdasd.ddd";
+        System.out.println(dir.lastIndexOf("/"));
     }
 
 }

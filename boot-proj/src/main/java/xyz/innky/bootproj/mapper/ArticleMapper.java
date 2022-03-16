@@ -1,6 +1,7 @@
 package xyz.innky.bootproj.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import xyz.innky.bootproj.pojo.Article;
 
 import java.util.List;
@@ -12,4 +13,8 @@ public interface ArticleMapper {
     List<Article> getRecentArticles(int len);
 
     Article getArticle(Integer aid);
+
+    Integer addArticle(Article article);
+
+    Integer deleteArticle(Article article);
 }

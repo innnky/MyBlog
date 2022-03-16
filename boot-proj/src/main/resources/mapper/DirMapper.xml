@@ -3,8 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.innky.bootproj.mapper.DirMapper">
+    <insert id="addDir">
+        insert into dir set name =#{name}, createTime=#{createTime}, parentId=#{parentId}
+    </insert>
+    <delete id="deleteDir">
+        delete from dir where name =#{name}
+    </delete>
 
     <select id="getRecentTypes" resultType="java.lang.String">
         select name from dir order by createTime desc limit #{len} ;
+    </select>
+    <select id="queryDir" resultType="java.lang.Integer">
+        select id from dir where name = #{dir};
     </select>
 </mapper>
