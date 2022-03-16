@@ -10,4 +10,6 @@ public interface ArticleMapper {
     List<Article> getAllArticle();
 
     List<Article> getRecentArticles(int len);
+
+    Article getArticle(Integer aid);
 }

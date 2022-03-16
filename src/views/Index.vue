@@ -19,12 +19,12 @@
 box-shadow: 0 0 30px rgba(246,186,186,0.1)">
       <div style="width: 40%;margin-left: 100px" class="hidden-xs-only">
         <h3 class="title" style="margin-top: 5px"> 最近文章 </h3>
-        <p class="linktext" style="font-size: 20px" v-for="article in recentDtoArticles" :key="article">{{ article.title }}</p>
+        <p class="linktext" style="font-size: 20px" v-for="article in recentDtoArticles" :key="article" @click="handleArticleDetail(article.id)">{{ article.title }}</p>
         <span class="linktext">查看更多</span>
       </div>
       <div style="width: 80%;margin-left: 10px" class="hidden-sm-and-up">
         <h3 class="title" style="margin-top: 5px"> 最近文章 </h3>
-        <p class="linktext" style="font-size: 20px" v-for="article in recentDtoArticles" :key="article">{{ article.title }}</p>
+        <p class="linktext" style="font-size: 20px" v-for="article in recentDtoArticles" :key="article" @click="handleArticleDetail(article.id)">{{ article.title }}</p>
         <span class="linktext">查看更多</span>
       </div>
       <img :src="allArtileImg" class="hidden-xs-only" alt="i" style="width: 30%">
@@ -106,6 +106,14 @@ export default {
     CommonHeader: CommonHeader,
     CommonFooter: CommonFooter
 
+  },
+  methods:{
+    handleArticleDetail(aid){
+      console.log(aid);
+      this.$router.push({
+        path:`/article/${aid}`
+      })
+    }
   },
   created() {
     this.loading = true

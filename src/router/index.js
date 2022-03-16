@@ -27,8 +27,9 @@ const routes = [
         component: Schedule
     },
     {
-        path: "/article",
-        component: Article
+        path: "/article/:aid",
+        component: Article,
+
     },
     {
         path: "/message",

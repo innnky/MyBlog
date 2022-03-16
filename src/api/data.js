@@ -45,10 +45,9 @@ export const delUser = (param) => {
         data:param
     })
 }
-export const getMall = (param) => {
+export const getArticleDetail = (id) => {
     return axios.request({
-        url:'/mall/getMall',
+        url:`/article/${id}`,
         method: 'get',
-        params:param
     })
 }

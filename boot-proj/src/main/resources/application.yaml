@@ -9,3 +9,7 @@ server:
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #sql映射文件位置
   type-aliases-package: xyz.innky.bootproj.pojo
+
+logging:
+  level:
+    xyz.innky.bootproj: DEBUG

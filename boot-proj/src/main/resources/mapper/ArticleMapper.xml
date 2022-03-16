@@ -8,6 +8,10 @@
         select * from article
     </select>
     <select id="getRecentArticles" resultType="xyz.innky.bootproj.pojo.Article">
-        select id, title from article order by lastModificationTime desc limit #{len};
+        select id, title, lastModificationTime from article order by lastModificationTime desc limit #{len};
     </select>
+    <select id="getArticle" resultType="xyz.innky.bootproj.pojo.Article">
+        select id,title, content, lastModificationTime from article where article.id =#{aid}
+    </select>
+
 </mapper>
