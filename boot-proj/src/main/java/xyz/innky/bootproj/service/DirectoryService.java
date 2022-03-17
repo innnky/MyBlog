@@ -22,8 +22,11 @@ public class DirectoryService {
 
     public Integer addDirectory(String name) {
         if(name.lastIndexOf("/")!=-1){
+
             String parentName = name.substring(0, name.lastIndexOf("/"));
+            parentName +="/";
             Integer parentId = dirMapper.queryDir(parentName);
+            name+="/";
             if(parentId != null){
                 Dir dir = new Dir();
                 dir.setCreateTime(System.currentTimeMillis());
