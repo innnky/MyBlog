@@ -1,27 +1,16 @@
 package xyz.innky.bootproj.pojo;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "info")
 public class Info {
-    @Column(name = "platform")
     private String platform;
 
-    @Id
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "url")
     private String url;
 
-    @Column(name = "imageUrl")
     private String imageUrl;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
     private String description;
 
     public String getPlatform() {

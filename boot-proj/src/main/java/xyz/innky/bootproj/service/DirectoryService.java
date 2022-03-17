@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import xyz.innky.bootproj.mapper.DirMapper;
 import xyz.innky.bootproj.pojo.Dir;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,13 @@ public class DirectoryService {
 
     public List<String> getRecentTypes() {
 
-        return dirMapper.getRecentTypes(3);
+        List<String> result = new ArrayList<>();
+        for (String recentType : dirMapper.getRecentTypes(3)) {
+            String x = recentType.substring(0, recentType.length()-1);
+            x = x.substring(x.lastIndexOf('/')+1);
+            result.add(x);
+        }
+        return result;
     }
 
 

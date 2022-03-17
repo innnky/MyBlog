@@ -13,10 +13,9 @@
               style="background:#fff;padding: 40px;box-shadow: 0px 0px 30px rgba(231,154,170,0.39);
               border-radius: 2px">
         <div v-for="article in articleData" :key="article.title">
-          <h2 class="articleTitle" style="font-family: 'Lucida Handwriting',sans-serif" @click="showArticleDetail(article.url)">{{ article.title }}</h2>
-          <p style="margin-left: 15px;font-weight: lighter;font-family:'微软雅黑 Light',sans-serif">加iconPath属性以显示图标
-            + 添加selectPath属性以显示选中图标</p>
-          <span style="float: right;font-style: italic">2022.2.16</span>
+          <h2 class="articleTitle" style="font-family: 'Lucida Handwriting',sans-serif" @click="handleArticleDetail(article.id)">{{ article.title }}</h2>
+          <p style="margin-left: 15px;font-weight: lighter;font-family:'微软雅黑 Light',sans-serif">{{article.content}}</p>
+          <span style="float: right;font-style: italic">{{article.date}}</span>
           <br/>
           <el-divider></el-divider>
         </div>
@@ -24,7 +23,9 @@
           <el-pagination
             background
             layout="prev, pager, next"
-            :total="1000">
+            :total="total"
+            :page-size="pageSize"
+            @current-change="handlePageChange">
         </el-pagination></div>
 
       </el-col>
@@ -36,6 +37,7 @@
 <script>
 import CommonHeader from "@/components/CommonHeader";
 import CommonFooter from "@/components/CommonFooter";
+import {getAllArticle} from "@/api/data";
 
 export default {
   name: "AllArticles",
@@ -43,37 +45,42 @@ export default {
     CommonHeader: CommonHeader,
     CommonFooter: CommonFooter
   },
+  created() {
+    getAllArticle({
+      page:1,
+      pageSize: this.pageSize
+    }).then((res)=>{
+      this.articleData =res.data.articles;
+      this.total = res.data.total;
+      // console.log(res);
+    })
+  },
   data() {
     return {
-
-      backgroundImage: require('@/assets/9888608.png'),
+      pageSize:7,
+      // backgroundImage: "http://home.innky.xyz:25566/images/9888608.png",
       articleData: [
-        {
-          title: 'SpringBoot笔记',
-          abstract: '加iconPath属性以显示图标 + 添加selectPath属性以显示选中图标\n',
-          date: '2022.2.16',
-          url: "/article"
-        },
-        {
-          title: 'SpringBoot笔记',
-          abstract: '加iconPath属性以显示图标 + 添加selectPath属性以显示选中图标\n',
-          date: '2022.2.16'
-        }, {
-          title: 'SpringBoot笔记',
-          abstract: '加iconPath属性以显示图标 + 添加selectPath属性以显示选中图标\n',
-          date: '2022.2.16'
-        }, {
-          title: 'SpringBoot笔记',
-          abstract: '加iconPath属性以显示图标 + 添加selectPath属性以显示选中图标\n',
-          date: '2022.2.16'
-        }
-      ]
+      ],
+      total: 0
     }
   },
   methods:{
-    showArticleDetail(url){
-      // console.log("aaa");
-      this.$router.push(url)
+    handleArticleDetail(aid){
+      // console.log(aid);
+      this.$router.push({
+        path:`/article/${aid}`
+      })
+    },
+    handlePageChange(page){
+      getAllArticle({
+        page:page,
+        pageSize: this.pageSize
+      }).then((res)=>{
+        this.articleData =res.data.articles;
+        this.total = res.data.total;
+        // console.log(res);
+      })
+      window.scroll(0,1)
     }
   }
 }

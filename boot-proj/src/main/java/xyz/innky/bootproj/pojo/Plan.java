@@ -1,30 +1,19 @@
 package xyz.innky.bootproj.pojo;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "plan")
 public class Plan {
-    @Id
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "completed")
     private Byte completed;
 
-    @Column(name = "parentId")
     private Integer parentId;
 
-    @Column(name = "content")
     private Integer content;
 
-    @Column(name = "estimatedTime")
     private Integer estimatedTime;
 
-    @Column(name = "startTime")
     private java.sql.Date startTime;
 
-    @Column(name = "completionTime")
     private java.sql.Date completionTime;
 
     public Integer getId() {

@@ -44,7 +44,7 @@ public class ArticleService {
         List<Info> infos = infoMapper.getInfos();
         List<Inf> res = new ArrayList<>();
         for (Info info : infos) {
-            res.add(new Inf(info.getName(),info.getId().toString(),info.getDescription(), info.getImageUrl()));
+            res.add(new Inf(info.getName(),info.getId().toString(),info.getDescription(), info.getUrl(), info.getImageUrl()));
         }
         return res;
     }
@@ -81,5 +81,36 @@ public class ArticleService {
         }
         return 0;
 
+    }
+
+    public List<DtoArticle> getAllArticle(Integer page, Integer pageSize) {
+        Integer offset = pageSize*(page-1);
+        char[] replaceChs = {'#','+','!','(',')','[',']','`','*'};
+
+        List<Article> articles = articleMapper.getAllArticle(offset,pageSize);
+
+        List<DtoArticle> ret =new ArrayList<>();
+        for (Article article : articles) {
+            DtoArticle article1 = new DtoArticle(article.getTitle(),article.getId().toString());
+            article1.setDate(dateFormat.format(new Date(article.getLastModificationTime())));
+
+
+            String substring =article.getContent();
+            try {
+                substring =article.getContent().substring(0, 100);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            for (char ch :replaceChs){
+                substring = substring.replace(String.valueOf(ch),"");
+            }
+            article1.setContent(substring);
+            ret.add(article1);
+        }
+        return ret;
+    }
+
+    public Integer queryArticleNums() {
+        return articleMapper.queryArticleNums();
     }
 }

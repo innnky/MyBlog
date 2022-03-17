@@ -63,10 +63,6 @@ export default {
   },
   data(){
     return{
-      backgroundImage:require('@/assets/79008828_p0.jpg'),
-      bgstyle: {
-        backgroundImage: 'url(' + require('@/assets/79008828_p0.jpg') + ')',
-      },
       tableData: [{
         id: 1,
         date: '2016-05-02',

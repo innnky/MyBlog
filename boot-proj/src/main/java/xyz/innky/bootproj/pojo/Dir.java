@@ -1,21 +1,13 @@
 package xyz.innky.bootproj.pojo;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "dir")
 public class Dir {
-    @Id
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "parentId")
     private Integer parentId;
 
-    @Column(name = "createTime")
     private Long createTime;
 
 

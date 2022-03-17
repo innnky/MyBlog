@@ -1,9 +1,16 @@
 import axios from "./axios";
 export const getIndexInformation = () => {
-  return axios.request({
-      url: "/indexInformation",
-      method: "get"
-  })
+    return axios.request({
+        url: "/indexInformation",
+        method: "get"
+    })
+}
+export const getAllArticle = (param) => {
+    return axios.request({
+        url: "/all/article",
+        method: "get",
+        params:param
+    })
 }
 export const getMenu = (param) =>{
     return axios.request({

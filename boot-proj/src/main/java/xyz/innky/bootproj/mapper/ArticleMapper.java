@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface ArticleMapper {
-    List<Article> getAllArticle();
+    List<Article> getAllArticle(@Param("offset") Integer offset, @Param("pageSize") Integer pageSize);
 
     List<Article> getRecentArticles(int len);
 
@@ -17,4 +17,6 @@ public interface ArticleMapper {
     Integer addArticle(Article article);
 
     Integer deleteArticle(Article article);
+
+    Integer queryArticleNums();
 }

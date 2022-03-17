@@ -3,7 +3,7 @@
     <common-header class="w-100 position-fixed" style="z-index: 1000"/>
 
     <div class="web-bg " :style="bgstyle"></div>
-    <h3 class="mytitle mb-3" style="text-align: left">SpringBoot学习笔记</h3>
+    <h3 class="mytitle mb-3" style="text-align: left" ref="titleee">{{atitle}}</h3>
     <div style="width: 100%;">
       <div class="content row justify-content-center w-100 m-0" >
         <!--    <div></div>-->
@@ -43,11 +43,11 @@ export default {
   },
   data() {
     return {
-      backgroundImage: require('@/assets/79008828_p0.jpg'),
       bgstyle: {
-        backgroundImage: 'url(' + require('@/assets/9888608.png') + ')',
+        backgroundImage: 'url(http://home.innky.xyz:25566/images/9888608.png)',
       },
-      articleContent:""
+      articleContent:"",
+      atitle:""
     }
   },
   methods: {},
@@ -55,8 +55,13 @@ export default {
     const aid = this.$route.params.aid;
     getArticleDetail(aid).then((res)=>{
       this.articleContent = res.data.content
-      console.log(res);
+      this.atitle = res.data.title
+      // console.log(res);
     })
+  },
+  mounted() {
+    // this.$refs.titleee.scrollIntoView();
+    window.scroll(0,1)
   }
 }
 </script>

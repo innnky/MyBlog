@@ -1,27 +1,17 @@
 package xyz.innky.bootproj.pojo;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "article")
 public class Article {
-    @Id
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
     private String content;
 
-    @Column(name = "path")
     private String path;
 
-    @Column(name = "dirId")
     private Integer dirId;
 
-    @Column(name = "lastModificationTime")
     private Long lastModificationTime;
 
     public Integer getId() {

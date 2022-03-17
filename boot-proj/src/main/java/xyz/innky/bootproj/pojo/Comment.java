@@ -1,27 +1,17 @@
 package xyz.innky.bootproj.pojo;
 
-import javax.persistence.*;
 
-@Entity
-@Table(name = "comment")
 public class Comment {
-    @Id
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "articleId")
     private Integer articleId;
 
-    @Column(name = "parentId")
     private Integer parentId;
 
-    @Column(name = "content")
     private String content;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "publishedTime")
     private java.sql.Timestamp publishedTime;
 
     public Integer getId() {

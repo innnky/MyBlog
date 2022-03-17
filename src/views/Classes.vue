@@ -48,10 +48,6 @@ export default {
   },
   data(){
     return{
-      backgroundImage:require('@/assets/79008828_p0.jpg'),
-      bgstyle: {
-        backgroundImage: 'url(' + require('@/assets/79008828_p0.jpg') + ')',
-      },
       data: [{
         id: 1,
         label: '一级 1',
@@ -105,11 +101,13 @@ export default {
   },
   methods:{
     handleDragStart(node, ev) {
-      console.log(ev);
+      // console.log(ev);
+      ev
       console.log('drag start', node);
     },
     handleDragEnter(draggingNode, dropNode, ev) {
-      console.log(ev);
+      // console.log(ev);
+      ev
       console.log('tree drag enter: ', dropNode.label);
     },
     handleDragLeave(draggingNode, dropNode, ev) {

@@ -3,17 +3,27 @@ package xyz.innky.bootproj.dto;
 public class Inf {
     private String title;
     private String id;
+    private String description;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Inf(String title, String id, String description, String link, String img) {
+        this.title = title;
+        this.id = id;
+        this.description = description;
+        this.link = link;
+        this.img = img;
+    }
 
     public Inf() {
     }
 
-    public Inf(String title, String id, String link, String img) {
-        this.title = title;
-        this.id = id;
-        this.link = link;
-        this.img = img;
-    }
 
     public String getTitle() {
         return title;

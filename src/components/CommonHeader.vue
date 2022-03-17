@@ -71,7 +71,8 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
       }).then(({ value }) => {
-        console.log(value);
+        //console.log(value);
+        value
       }).catch(() => {
 
       });

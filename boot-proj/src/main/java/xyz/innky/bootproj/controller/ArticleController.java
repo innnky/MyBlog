@@ -9,6 +9,9 @@ import xyz.innky.bootproj.service.ArticleService;
 import xyz.innky.bootproj.service.DirectoryService;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:8080", "null"})
@@ -33,6 +36,17 @@ public class ArticleController {
     public DtoArticle article(@PathVariable("aid") Integer aid){
 
         return articleService.getArticle(aid);
+    }
+
+    @GetMapping("/all/article")
+    public Object getAllArticle(@RequestParam(defaultValue = "1") Integer page,
+                                @RequestParam(defaultValue = "10") Integer pageSize){
+        Map<String, Object> map = new HashMap<>();
+        List<DtoArticle> articles = articleService.getAllArticle(page, pageSize);
+        Integer totalArticles = articleService.queryArticleNums();
+        map.put("articles",articles);
+        map.put("total", totalArticles);
+        return map;
     }
 
     @PostMapping("/article")

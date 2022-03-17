@@ -58,7 +58,7 @@ box-shadow: 0 0 30px rgba(246,186,186,0.1)">
               <el-card class="box-card" shadow="hover">
                 <div slot="header" class="clearfix">
                   <span>{{ item.title }}</span>
-                  <el-button style="float: right; padding: 3px 0" type="text">前往</el-button>
+                  <a :href="item.link"><el-button style="float: right; padding: 3px 0" type="text">前往</el-button></a>
                 </div>
                 <div style="">
                   <div class="row justify-content-center">
@@ -70,8 +70,7 @@ box-shadow: 0 0 30px rgba(246,186,186,0.1)">
                   <div class="row mt-2">
                     <div class="col ">
                       <div style="margin-left: 40px" class="text item">
-                        <p class="aaaaaxx">{{ item.id }}</p>
-                        <p class="aaaaaxx">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi asperiores </p>
+                        <p class="aaaaaxx mt-3">{{ item.description }}</p>
                         <!--                <p class="aaaaaxx">{{ item.id }}</p>-->
                       </div>
                     </div>
@@ -109,7 +108,7 @@ export default {
   },
   methods:{
     handleArticleDetail(aid){
-      console.log(aid);
+      // console.log(aid);
       this.$router.push({
         path:`/article/${aid}`
       })
@@ -118,7 +117,7 @@ export default {
   created() {
     this.loading = true
     getIndexInformation().then((res)=>{
-      console.log(res);
+      // console.log(res);
       this.recentDtoArticles = res.data.recentDtoArticles;
       this.personalInf = res.data.personalInf;
       this.types = res.data.types;
@@ -129,38 +128,14 @@ export default {
     return {
       allArtileImg: require('@/assets/undraw.svg'),
       bgstyle: {
-        backgroundImage: 'url(' + require('@/assets/art.jpg') + ')',
+        backgroundImage: 'url(' + "http://home.innky.xyz:25566/images/art.jpg" + ')',
       },
-      bgimg2: 'url(' + require('@/assets/9888608.png') + ')',
+      bgimg2: 'url(http://home.innky.xyz:25566/images/9888608.png)',
       classArticleImg: require('@/assets/un.svg'),
       recentDtoArticles: [],
       types: [
-        '前端',
-        '后端',
-        'javase'
       ],
       personalInf: [
-        {
-          title: "Bilibili",
-          id: "Rcell",
-          link: "https://space.bilibili.com/343303724",
-          img: "https://img2.baidu.com/it/u=268699178,2128593682&fm=253&fmt=auto&app=138&f=JPEG?w=496&h=500"
-
-        },
-        {
-          title: "Github",
-          id: "innnky",
-          link: "https://github.com/innnky",
-          img: "https://img1.baidu.com/it/u=2703487632,963885301&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
-
-        },
-        {
-          title: "QQ",
-          id: "洗衣机",
-          link: "https://space.bilibili.com/343303724",
-          img: "https://img2.baidu.com/it/u=268699178,2128593682&fm=253&fmt=auto&app=138&f=JPEG?w=496&h=500"
-
-        }
       ]
     }
   }
