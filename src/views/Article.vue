@@ -13,7 +13,7 @@
             <mark-down-article :content="articleContent">
 
             </mark-down-article>
-            <comment-area/>
+            <comment-area :article-id="this.$route.params.aid"/>
           </div>
         </div>
         
@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       bgstyle: {
-        backgroundImage: 'url(http://home.innky.xyz:25566/images/9888608.png)',
+        backgroundImage: 'url(https://home.innky.xyz:25566/images/9888608.png)',
       },
       articleContent:"",
       atitle:""
@@ -56,12 +56,13 @@ export default {
     getArticleDetail(aid).then((res)=>{
       this.articleContent = res.data.content
       this.atitle = res.data.title
+      window.scroll(0,1)
       // console.log(res);
     })
   },
   mounted() {
     // this.$refs.titleee.scrollIntoView();
-    window.scroll(0,1)
+
   }
 }
 </script>

@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       pageSize:7,
-      // backgroundImage: "http://home.innky.xyz:25566/images/9888608.png",
+      // backgroundImage: "https://home.innky.xyz:25566/images/9888608.png",
       articleData: [
       ],
       total: 0

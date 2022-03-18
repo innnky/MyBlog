@@ -14,7 +14,7 @@
             <p>
               {{articleContent}}
             </p>
-            <comment-area/>
+            <comment-area :article-id="'-1'"/>
           </div>
         </div>
 

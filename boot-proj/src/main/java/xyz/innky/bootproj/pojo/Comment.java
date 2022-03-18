@@ -12,7 +12,7 @@ public class Comment {
 
     private String email;
 
-    private java.sql.Timestamp publishedTime;
+    private Long publishedTime;
 
     public Integer getId() {
         return this.id;
@@ -54,11 +54,11 @@ public class Comment {
         this.email = email;
     }
 
-    public java.sql.Timestamp getPublishedTime() {
+    public Long getPublishedTime() {
         return this.publishedTime;
     }
 
-    public void setPublishedTime(java.sql.Timestamp publishedTime) {
+    public void setPublishedTime(Long publishedTime) {
         this.publishedTime = publishedTime;
     }
 }

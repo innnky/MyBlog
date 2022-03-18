@@ -5,12 +5,19 @@ spring:
     password: "000508"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-server:
-  port: 8081
+
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #sql映射文件位置
   type-aliases-package: xyz.innky.bootproj.pojo
-
+server:
+  port: 8081
+#  ssl:
+#    enabled: true
+#    # keystore 文件
+#    key-store: classpath:www.innky.xyz.keystore
+#    key-store-type: PKCS12
+#    # keystore的密码
+#    key-store-password: 123456
 logging:
   level:
     xyz.innky.bootproj: DEBUG

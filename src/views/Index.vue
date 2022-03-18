@@ -128,9 +128,9 @@ export default {
     return {
       allArtileImg: require('@/assets/undraw.svg'),
       bgstyle: {
-        backgroundImage: 'url(' + "http://home.innky.xyz:25566/images/art.jpg" + ')',
+        backgroundImage: 'url(' + "https://home.innky.xyz:25566/images/art.jpg" + ')',
       },
-      bgimg2: 'url(http://home.innky.xyz:25566/images/9888608.png)',
+      bgimg2: 'url(https://home.innky.xyz:25566/images/9888608.png)',
       classArticleImg: require('@/assets/un.svg'),
       recentDtoArticles: [],
       types: [

@@ -58,3 +58,17 @@ export const getArticleDetail = (id) => {
         method: 'get',
     })
 }
+
+export const getCommentByArticle = (id)=>{
+    return axios.request({
+        url:`/comment/article/${id}`,
+        method: 'get'
+    })
+}
+export const insertComment = (param)=>{
+    return axios.request({
+        url:`/comment/`,
+        method: 'post',
+        params: param
+    })
+}

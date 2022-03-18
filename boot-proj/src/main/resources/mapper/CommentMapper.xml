@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.innky.bootproj.mapper.CommentMapper">
+    <insert id="insertComment">
+        insert into comment(articleId, parentId, content, email, publishedTime)
+        VALUE (#{articleId}, #{parentId}, #{content}, #{email}, #{publishedTime})
+    </insert>
+
+    <select id="getCommentsByArticle" resultType="xyz.innky.bootproj.pojo.Comment">
+        select * from comment where articleId = #{aid};
+    </select>
+</mapper>
