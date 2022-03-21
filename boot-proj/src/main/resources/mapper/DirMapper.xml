@@ -16,4 +16,8 @@
     <select id="queryDir" resultType="java.lang.Integer">
         select id from dir where name = #{dir};
     </select>
+    <select id="getAllDirs" resultType="xyz.innky.bootproj.pojo.Dir">
+        select *
+        from dir;
+    </select>
 </mapper>

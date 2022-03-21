@@ -3,17 +3,21 @@ package xyz.innky.bootproj.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import xyz.innky.bootproj.dto.DirDto;
 import xyz.innky.bootproj.mapper.DirMapper;
 import xyz.innky.bootproj.pojo.Dir;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.lang.reflect.Field;
+import java.util.*;
 
 @Service
+@Transactional
 public class DirectoryService {
     @Autowired
     DirMapper dirMapper;
+    @Autowired
+    ArticleService articleService;
 
     public List<String> getRecentTypes() {
 
@@ -53,5 +57,29 @@ public class DirectoryService {
 
     public Integer deleteDir(String name) {
         return dirMapper.deleteDir(name);
+    }
+
+    public List<DirDto> getAllDirs() {
+        List<Dir> dirs = dirMapper.getAllDirs();
+
+        Map<Integer, DirDto> map = new HashMap<>();
+        for (Dir dir : dirs) {
+            DirDto dto = new DirDto();
+            dto.setId(dir.getId().toString());
+            dto.setLabel(processName(dir.getName()));
+            map.put(dir.getId(),dto);
+            if (dir.getParentId() != null){
+                map.get(dir.getParentId()).addChildren(dto);
+            }
+        }
+//        articleService.getAllArticle(0,-1);
+        return map.get(10).getChildren();
+    }
+
+    public String processName(String fullName){
+        if ("/".equals(fullName))
+            return fullName;
+        String substring = fullName.substring(0, fullName.length() - 1);
+        return substring.substring(substring.lastIndexOf("/")+1);
     }
 }

@@ -33,7 +33,7 @@ public class HttpArticleUploader {
         paramMap.put("content", content);
         paramMap.put("lastModifiedTime", lastModifiedTime);
 //
-        HttpUtil.post("http://localhost:8081/article", paramMap);
+        HttpUtil.post(Config.serverUrl+"/article", paramMap);
     }
     public void mkdir(File file){
 
@@ -42,6 +42,6 @@ public class HttpArticleUploader {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", substring);
 
-        HttpUtil.post("http://localhost:8081/dir", paramMap);
+        HttpUtil.post(Config.serverUrl+"/dir", paramMap);
     }
 }

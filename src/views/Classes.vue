@@ -13,7 +13,7 @@
               style="background:#fff;padding: 40px;box-shadow: 0px 0px 30px rgba(107,74,82,0.39);
               border-radius: 2px;min-height: 500px">
         <el-tree
-            :data="data"
+            :data="treeData"
             node-key="id"
             default-expand-all
             @node-drag-start="handleDragStart"
@@ -38,6 +38,7 @@
 <script>
 import CommonHeader from "@/components/CommonHeader";
 import CommonFooter from "@/components/CommonFooter";
+import {getAllDirs} from "@/api/data";
 
 export default {
   name: "Classes",
@@ -46,53 +47,15 @@ export default {
     CommonFooter: CommonFooter
 
   },
+  created() {
+    getAllDirs().then((res)=>{
+      this.treeData = res.data.dirs;
+    })
+  }
+  ,
   data(){
     return{
-      data: [{
-        id: 1,
-        label: '一级 1',
-        children: [{
-          id: 4,
-          label: '二级 1-1',
-          children: [{
-            id: 9,
-            label: '三级 1-1-1'
-          }, {
-            id: 10,
-            label: '三级 1-1-2'
-          }]
-        }]
-      }, {
-        id: 2,
-        label: '一级 2',
-        children: [{
-          id: 5,
-          label: '二级 2-1'
-        }, {
-          id: 6,
-          label: '二级 2-2'
-        }]
-      }, {
-        id: 3,
-        label: '一级 3',
-        children: [{
-          id: 7,
-          label: '二级 3-1'
-        }, {
-          id: 8,
-          label: '二级 3-2',
-          children: [{
-            id: 11,
-            label: '三级 3-2-1'
-          }, {
-            id: 12,
-            label: '三级 3-2-2'
-          }, {
-            id: 13,
-            label: '三级 3-2-3'
-          }]
-        }]
-      }],
+      treeData: [],
       defaultProps: {
         children: 'children',
         label: 'label'

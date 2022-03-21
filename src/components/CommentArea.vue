@@ -81,6 +81,7 @@ export default {
           this.replyCid=''
           this.email = ''
           this.liuyan = '回复'
+          this.$message("评论成功")
         })
       })
     }

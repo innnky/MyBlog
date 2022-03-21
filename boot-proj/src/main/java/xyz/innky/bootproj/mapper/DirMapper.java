@@ -15,4 +15,6 @@ public interface DirMapper {
     Integer addDir(Dir dir);
 
     Integer deleteDir(String name);
+
+    List<Dir> getAllDirs();
 }

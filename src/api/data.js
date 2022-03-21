@@ -65,10 +65,28 @@ export const getCommentByArticle = (id)=>{
         method: 'get'
     })
 }
+export const updateStatus = (ids)=>{
+    return axios.request({
+        url:`/plan/complete/${ids}`,
+        method: 'put'
+    })
+}
 export const insertComment = (param)=>{
     return axios.request({
         url:`/comment/`,
         method: 'post',
         params: param
+    })
+}
+export const getAllDirs = () => {
+    return axios.request({
+        url:'/dir/all',
+        method: 'get'
+    })
+}
+export const getAllPlans = () => {
+    return axios.request({
+        url:'/plan/all',
+        method: 'get'
     })
 }
